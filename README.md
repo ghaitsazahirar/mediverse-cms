@@ -44,3 +44,133 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+---
+
+# 🖥️ Mediverse CMS
+
+**Mediverse CMS** adalah aplikasi frontend berbasis **React + TypeScript** yang digunakan untuk mengelola data dan konten dalam platform Mediverse — sistem reservasi medis online.
+
+---
+
+## 🚀 Teknologi yang Digunakan
+
+- ⚛️ **React.js** – Library UI modern
+- 🟦 **TypeScript** – Superset JavaScript dengan type-safety
+- 🛠️ **Create React App (CRA)** – Tool untuk bootstrap proyek React
+- 🧪 **Jest & React Testing Library** – Untuk unit testing
+
+---
+
+## 📁 Struktur Folder
+
+```bash
+mediverse-cms/
+├── public/               # File statis (favicon, HTML, manifest, dsb)
+│   ├── index.html
+│   ├── favicon.ico
+│   └── ...
+├── src/                  # Source code utama
+│   ├── App.tsx           # Komponen utama aplikasi
+│   ├── App.test.tsx      # Unit test untuk App
+│   ├── index.tsx         # Entry point React
+│   ├── reportWebVitals.ts# Performance analytics (optional)
+│   ├── setupTests.ts     # Setup untuk testing
+│   └── ...               # File CSS & SVG
+├── package.json          # Dependencies & script
+├── tsconfig.json         # Konfigurasi TypeScript
+├── .gitignore            # File yang diabaikan Git
+└── README.md             # Dokumentasi proyek
+```
+
+---
+
+## ▶️ Cara Menjalankan Project
+
+1. **Clone repository:**
+   ```bash
+   git clone https://github.com/ghaitsazahirar/mediverse-cms.git
+   cd mediverse-cms
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # atau
+   yarn install
+   ```
+
+3. **Jalankan secara lokal:**
+   ```bash
+   npm start
+   # atau
+   yarn start
+   ```
+
+4. **Akses di browser:**
+   ```
+   http://localhost:3000
+   ```
+
+---
+
+## 🌀 Git Flow
+
+Proyek ini menggunakan **Git Flow** sebagai strategi branching untuk pengembangan yang terstruktur dan kolaboratif.
+
+### Alur Awal
+
+1. **Inisialisasi Git (jika belum):**
+   ```bash
+   git init
+   ```
+
+2. **Menambahkan remote origin:**
+   ```bash
+   git remote add origin https://github.com/ghaitsazahirar/mediverse-cms.git
+   ```
+
+3. **Membuat dan checkout ke branch `develop`:**
+   ```bash
+   git checkout -b develop
+   ```
+
+4. **Commit awal:**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   ```
+
+5. **Push ke GitHub:**
+   ```bash
+   git push -u origin develop
+   ```
+
+---
+
+### 📌 Struktur Branch
+
+- `main` → versi produksi (_production-ready_)
+- `develop` → pengembangan aktif
+- `feature/*` → penambahan fitur baru
+- `release/*` → persiapan rilis ke `main`
+- `hotfix/*` → perbaikan cepat pada `main`
+
+> Semua perubahan akan di-*merge* ke `develop`, dan saat rilis, akan di-*merge* ke `main` serta diberi **Git Tag** versi menggunakan [Semantic Versioning](https://semver.org/).
+
+---
+
+## 🏷️ Semantic Versioning (Git Tag)
+
+Versi release mengikuti format:
+
+```
+MAJOR.MINOR.PATCH
+```
+
+Contoh implementasi tag saat rilis:
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+---
