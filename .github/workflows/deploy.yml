@@ -3,7 +3,7 @@ name: Deploy React App to Vercel
 on:
   push:
     tags:
-      - 'v*' # contoh tag: v1.0.0, v2.0.1
+      - 'v*'  # Contoh tag: v1.0.0, v2.0.1
 
 jobs:
   deploy:
@@ -26,9 +26,9 @@ jobs:
       run: |
         npm run build
 
-    - name: Check if build folder exists
+    - name: Check if dist folder exists
       run: |
-        ls -alh ./build  # Memastikan folder build ada
+        ls -alh ./dist  # Memastikan folder dist ada
 
     - name: Deploy to Vercel
       env:
@@ -37,4 +37,4 @@ jobs:
         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       run: |
         npm install -g vercel
-        vercel --prod --token $VERCEL_TOKEN --org-id $VERCEL_ORG_ID --project-id $VERCEL_PROJECT_ID --confirm --cwd ./build
+        vercel --prod --token $VERCEL_TOKEN --org-id $VERCEL_ORG_ID --project-id $VERCEL_PROJECT_ID --confirm --cwd ./dist
