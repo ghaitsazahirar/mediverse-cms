@@ -14,6 +14,7 @@ const DashboardPage = () => {
   
       if (authError) {
         console.error("Auth error:", authError);
+        setLoading(false);
         return;
       }
   
@@ -29,14 +30,16 @@ const DashboardPage = () => {
         } else {
           setUser({ ...user, name: userProfile.name });
         }
+      } else {
+        // kalau user null langsung redirect
+        window.location.href = '/';
       }
   
       setLoading(false);
     };
   
     fetchUser();
-  }, []);
-  
+  }, []);  
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -52,38 +55,38 @@ const DashboardPage = () => {
     );
   }
 
+  if (!user) {
+    return null; // atau bisa <></> atau bisa kosongin aja
+  }
+  
+  // kalau user ada, baru render dashboard
   return (
     <div className="max-w-4xl mx-auto mt-20">
       <h2 className="text-2xl font-bold mb-4">Welcome to your Dashboard</h2>
-      {user ? (
-        <>
-          <p className="text-lg mb-4">Hello, {user.name}!</p>
-          
-          {/* Dashboard Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-blue-600 text-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold">Your Activities</h3>
-              <p className="mt-2">Manage your activities here.</p>
-            </div>
-            <div className="bg-green-600 text-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold">Statistics</h3>
-              <p className="mt-2">View your personal stats.</p>
-            </div>
-          </div>
-          
-          {/* Logout Button */}
-          <button
-            onClick={handleLogout}
-            className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <p className="text-lg">No user logged in. Please log in first.</p>
-      )}
+      <p className="text-lg mb-4">Hello, {user.name}!</p>
+  
+      {/* Dashboard Content */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div className="bg-blue-600 text-white p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold">Your Activities</h3>
+          <p className="mt-2">Manage your activities here.</p>
+        </div>
+        <div className="bg-green-600 text-white p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold">Statistics</h3>
+          <p className="mt-2">View your personal stats.</p>
+        </div>
+      </div>
+  
+      {/* Logout Button */}
+      <button
+        onClick={handleLogout}
+        className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"
+      >
+        Logout
+      </button>
     </div>
   );
+  
 };
 
 export default DashboardPage;
