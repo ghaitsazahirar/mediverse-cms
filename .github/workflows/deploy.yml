@@ -37,4 +37,4 @@ jobs:
         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       run: |
         npm install -g vercel
-        vercel --prod --token $VERCEL_TOKEN --org-id $VERCEL_ORG_ID --project-id $VERCEL_PROJECT_ID --confirm --cwd ./dist
+        vercel --prod --token $VERCEL_TOKEN --org $VERCEL_ORG_ID --project-id $VERCEL_PROJECT_ID --confirm --cwd ./dist
